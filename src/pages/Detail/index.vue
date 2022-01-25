@@ -381,8 +381,12 @@ export default {
         this.skuNum = Math.abs(parseInt(value));
       }
     },
-    addShopcar(){
-      this.$store.dispatch('addOrUpdateShopCar',{skuId:this.$route.params.skuid,skuNum:this.skuNum});
+    async addShopcar(){
+      try{
+      await this.$store.dispatch('addOrUpdateShopCar',{skuId:this.$route.params.skuid,skuNum:this.skuNum});
+      } catch(error) {
+        alert(error.message);
+      }
     }
   }
 };

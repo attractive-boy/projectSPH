@@ -17,7 +17,9 @@ const actions = {
     async addOrUpdateShopCar({commit},{skuId,skuNum}){
         let result = await reqAddOrUpdateShopCar(skuId,skuNum);
         if(result.code == 200){
-            alert("加入购物车成功");
+            return "ok";
+        }else{
+            return Promise.reject(new Error('faile'));
         }
     }
 };
