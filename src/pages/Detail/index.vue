@@ -102,7 +102,7 @@
                 <a href="javascript:" class="mins" @click="skuNum>1?skuNum--:[]">-</a>
               </div>
               <div class="add">
-                <a href="javascript:">加入购物车</a>
+                <a @click="addShopcar">加入购物车</a>
               </div>
             </div>
           </div>
@@ -380,6 +380,9 @@ export default {
       else{
         this.skuNum = Math.abs(parseInt(value));
       }
+    },
+    addShopcar(){
+      this.$store.dispatch('addOrUpdateShopCar',{skuId:this.$route.params.skuid,skuNum:this.skuNum});
     }
   }
 };
