@@ -383,7 +383,9 @@ export default {
     },
     async addShopcar(){
       try{
-      await this.$store.dispatch('addOrUpdateShopCar',{skuId:this.$route.params.skuid,skuNum:this.skuNum});
+      await this.$store.dispatch('addOrUpdateShopCart',{skuId:this.$route.params.skuid,skuNum:this.skuNum});
+      sessionStorage.setItem("SKUINFO",JSON.stringify(this.skuInfo));
+      this.$router.push({name:'AddCartSuccess',query:{skuNum:this.skuNum}});
       } catch(error) {
         alert(error.message);
       }
